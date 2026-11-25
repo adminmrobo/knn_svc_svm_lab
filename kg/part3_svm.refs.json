@@ -1,0 +1,192 @@
+[
+ {
+  "type": "webpage",
+  "title": "Distance & Kernel Methods",
+  "author": [
+   {
+    "literal": "MLTut"
+   }
+  ],
+  "id": "mltut2026distance",
+  "lab": {
+   "work": "lab:work/mltut2026distance",
+   "role": "primary",
+   "supports": [],
+   "locs": [],
+   "verified": {
+    "title": true,
+    "author": true,
+    "year": false,
+    "container": false,
+    "pages": false,
+    "doi": false
+   },
+   "checkedBy": "저자가 준 인포그래픽 그림에서 옮김",
+   "checkedSource": "author-memory"
+  }
+ },
+ {
+  "type": "article-journal",
+  "title": "Support-vector networks",
+  "author": [
+   {
+    "family": "Cortes",
+    "given": "Corinna"
+   },
+   {
+    "family": "Vapnik",
+    "given": "Vladimir"
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     1995
+    ]
+   ]
+  },
+  "container-title": "Machine Learning",
+  "id": "cortes1995support",
+  "lab": {
+   "work": "lab:work/cortes1995support",
+   "role": "background",
+   "supports": [],
+   "locs": [],
+   "verified": {
+    "title": true,
+    "author": true,
+    "year": true,
+    "container": true,
+    "pages": false,
+    "doi": false
+   },
+   "checkedBy": "작성자가 알고 있는 서지로 적음(외부 대조 안 함)",
+   "checkedSource": "author-memory"
+  }
+ },
+ {
+  "type": "paper-conference",
+  "title": "A training algorithm for optimal margin classifiers",
+  "author": [
+   {
+    "family": "Boser",
+    "given": "B. E."
+   },
+   {
+    "family": "Guyon",
+    "given": "I. M."
+   },
+   {
+    "family": "Vapnik",
+    "given": "V. N."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     1992
+    ]
+   ]
+  },
+  "container-title": "Proceedings of the Fifth Annual Workshop on Computational Learning Theory",
+  "id": "boser1992training",
+  "lab": {
+   "work": "lab:work/boser1992training",
+   "role": "background",
+   "supports": [],
+   "locs": [],
+   "verified": {
+    "title": true,
+    "author": true,
+    "year": true,
+    "container": true,
+    "pages": false,
+    "doi": false
+   },
+   "checkedBy": "작성자가 알고 있는 서지로 적음(외부 대조 안 함)",
+   "checkedSource": "author-memory"
+  }
+ },
+ {
+  "type": "book",
+  "title": "An Introduction to Statistical Learning",
+  "author": [
+   {
+    "family": "James",
+    "given": "Gareth"
+   },
+   {
+    "family": "Witten",
+    "given": "Daniela"
+   },
+   {
+    "family": "Hastie",
+    "given": "Trevor"
+   },
+   {
+    "family": "Tibshirani",
+    "given": "Robert"
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     2013
+    ]
+   ]
+  },
+  "publisher": "Springer",
+  "id": "james2013introduction",
+  "lab": {
+   "work": "lab:work/james2013introduction",
+   "role": "background",
+   "supports": [],
+   "locs": [],
+   "verified": {
+    "title": true,
+    "author": true,
+    "year": true,
+    "container": true,
+    "pages": false,
+    "doi": false
+   },
+   "checkedBy": "작성자가 알고 있는 서지로 적음(외부 대조 안 함)",
+   "checkedSource": "author-memory"
+  }
+ },
+ {
+  "type": "report",
+  "title": "Sequential minimal optimization: A fast algorithm for training support vector machines",
+  "author": [
+   {
+    "family": "Platt",
+    "given": "John"
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     1998
+    ]
+   ]
+  },
+  "publisher": "Microsoft Research",
+  "id": "platt1998sequential",
+  "lab": {
+   "work": "lab:work/platt1998sequential",
+   "role": "background",
+   "supports": [],
+   "locs": [],
+   "verified": {
+    "title": true,
+    "author": true,
+    "year": true,
+    "container": false,
+    "pages": false,
+    "doi": false
+   },
+   "checkedBy": "작성자가 알고 있는 서지로 적음(외부 대조 안 함)",
+   "checkedSource": "author-memory"
+  }
+ }
+]

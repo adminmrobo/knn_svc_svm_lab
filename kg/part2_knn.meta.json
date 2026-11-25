@@ -1,0 +1,38 @@
+{
+ "title": "이웃 투표 — 가장 가까운 k명에게 묻는 KNN",
+ "number": "파트 2",
+ "series": "거리로 가르는 분류 대회",
+ "about": [
+  "lab:concept/knn",
+  "lab:concept/choose-k",
+  "lab:concept/feature-scaling"
+ ],
+ "basedOn": [
+  "mltut2026distance"
+ ],
+ "educationalLevel": "입문",
+ "creator": [
+  {
+   "name": "안상선",
+   "role": "author",
+   "url": "https://adminmrobo.github.io/who_am_i/who_am_i.html"
+  }
+ ],
+ "contributor": [
+  {
+   "name": "AI 보조 제작",
+   "role": "assistant"
+  }
+ ],
+ "date": "2026-11-25",
+ "version": "1.0",
+ "language": [
+  "ko"
+ ],
+ "license": "",
+ "url": "https://adminmrobo.github.io/knn_svc_svm_lab/part2_knn.html",
+ "registry": "KG_00_registry 0.2",
+ "learningResourceType": "interactive explainer",
+ "seeAlso": "",
+ "suggestedCitation": "안상선 (2026). 이웃 투표 — 가장 가까운 k명에게 묻는 KNN. 거리로 가르는 분류 대회 파트 2, v1.0."
+}

@@ -1,0 +1,678 @@
+{
+ "version": "1.0",
+ "page": "part1_lda",
+ "nodes": [
+  {
+   "id": "lab:concept/feature-vector",
+   "type": "Concept",
+   "label": {
+    "ko": "벡터(특징 카드)",
+    "en": "Feature vector"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch1",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "math",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "점 하나를 순서 있는 숫자 묶음으로 적은 것"
+   }
+  },
+  {
+   "id": "lab:concept/feature",
+   "type": "Term",
+   "label": {
+    "ko": "특징",
+    "en": "Feature"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch1",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "ml-basics",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "카드에 적는 숫자 하나(가로 위치, 무게 등)"
+   }
+  },
+  {
+   "id": "lab:concept/euclidean-distance",
+   "type": "Concept",
+   "label": {
+    "ko": "유클리드 거리",
+    "en": "Euclidean distance"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch2",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "math",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "자리끼리 뺀 차이를 제곱해 더하고 루트를 씌운 직선거리"
+   }
+  },
+  {
+   "id": "lab:concept/class-mean",
+   "type": "Concept",
+   "label": {
+    "ko": "동아리 평균(깃발)",
+    "en": "Class mean"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch3",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "math",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "한 동아리 학생 카드의 평균 위치"
+   }
+  },
+  {
+   "id": "lab:concept/nearest-centroid",
+   "type": "Method",
+   "label": {
+    "ko": "가장 가까운 깃발 분류",
+    "en": "Nearest centroid classifier"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch3",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "새 점을 평균이 더 가까운 동아리로 보내는 방법"
+   }
+  },
+  {
+   "id": "lab:concept/dot-product",
+   "type": "Concept",
+   "label": {
+    "ko": "내적",
+    "en": "Dot product"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch4",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "math",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "두 카드의 자리끼리 곱해서 모두 더한 값"
+   }
+  },
+  {
+   "id": "lab:concept/projection-score",
+   "type": "Concept",
+   "label": {
+    "ko": "그림자 점수(사영)",
+    "en": "Projection score"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch4",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "z = w·x로 카드를 숫자 하나로 줄인 값"
+   }
+  },
+  {
+   "id": "lab:concept/fisher-criterion",
+   "type": "Concept",
+   "label": {
+    "ko": "Fisher의 기준",
+    "en": "Fisher criterion"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch5",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "그림자 평균 차이² ÷ 그림자 퍼짐의 합이 큰 방향이 좋다"
+   }
+  },
+  {
+   "id": "lab:concept/lda",
+   "type": "Method",
+   "label": {
+    "ko": "선형 판별 분석(LDA)",
+    "en": "Linear discriminant analysis"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch5",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "떨어짐 ÷ 퍼짐이 가장 큰 방향으로 그림자를 내려 곧은 선으로 가르는 방법"
+   }
+  },
+  {
+   "id": "lab:concept/qda",
+   "type": "Method",
+   "label": {
+    "ko": "이차 판별 분석(QDA)",
+    "en": "Quadratic discriminant analysis"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch5",
+   "level": 3,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "동아리마다 퍼진 모양이 다를 때 휘어진 경계로 가르는 방법"
+   }
+  },
+  {
+   "id": "lab:concept/lda-shared-shape",
+   "type": "Limitation",
+   "label": {
+    "ko": "같은 모양 가정",
+    "en": "Shared covariance assumption"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch5",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "두 동아리가 같은 모양의 타원으로 퍼져 있다고 가정함"
+   }
+  },
+  {
+   "id": "lab:concept/flag-analogy",
+   "type": "Analogy",
+   "label": {
+    "ko": "동아리 깃발",
+    "en": "Flag analogy"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch3",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "평균 위치를 깃발로 비유"
+   }
+  },
+  {
+   "id": "lab:concept/shadow-analogy",
+   "type": "Analogy",
+   "label": {
+    "ko": "담장 그림자",
+    "en": "Shadow analogy"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch4",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "사영을 담장에 떨어진 그림자로 비유"
+   }
+  },
+  {
+   "id": "lab:simulation/part1_lda-ch1",
+   "type": "Simulation",
+   "label": {
+    "ko": "전학생을 세우면 카드가 생긴다",
+    "en": "ch1 experiment"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch1-panel",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:quiz/part1_lda-ch1-1",
+   "type": "QuizItem",
+   "label": {
+    "ko": "카드 (3, 1)과 (1, 3)은 같은 학생일까요?",
+    "en": "ch1 quiz"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch1-quiz",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:simulation/part1_lda-ch2",
+   "type": "Simulation",
+   "label": {
+    "ko": "두 점을 끌어서 거리 재기",
+    "en": "ch2 experiment"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch2-panel",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:quiz/part1_lda-ch2-1",
+   "type": "QuizItem",
+   "label": {
+    "ko": "(0, 0)과 (6, 8) 사이 거리는?",
+    "en": "ch2 quiz"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch2-quiz",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:simulation/part1_lda-ch3",
+   "type": "Simulation",
+   "label": {
+    "ko": "깃발 꽂고 전학생 안내하기",
+    "en": "ch3 experiment"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch3-panel",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:quiz/part1_lda-ch3-1",
+   "type": "QuizItem",
+   "label": {
+    "ko": "깃발 (1, 1)과 (3, 2)가 있을 때 전학생 (1, 2)는 어느 깃발에 더 가까울까요?",
+    "en": "ch3 quiz"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch3-quiz",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:simulation/part1_lda-ch4",
+   "type": "Simulation",
+   "label": {
+    "ko": "그림자를 담장에 떨어뜨려 점수 매기기",
+    "en": "ch4 experiment"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch4-panel",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:quiz/part1_lda-ch4-1",
+   "type": "QuizItem",
+   "label": {
+    "ko": "무게 w = (2, 1), 합격선 5.5일 때 전학생 (1, 3)은?",
+    "en": "ch4 quiz"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch4-quiz",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:simulation/part1_lda-ch5",
+   "type": "Simulation",
+   "label": {
+    "ko": "해의 방향을 돌려 그림자 비교하기",
+    "en": "ch5 experiment"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch5-panel",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:quiz/part1_lda-ch5-1",
+   "type": "QuizItem",
+   "label": {
+    "ko": "Fisher의 기준으로 좋은 그림자 방향은?",
+    "en": "ch5 quiz"
+   },
+   "page": "part1_lda",
+   "anchor": "#ch5-quiz",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:work/eeanimation2026lda",
+   "type": "Work",
+   "label": {
+    "ko": "eeanimation 인포그래픽 「Linear Discriminant Analysis」 1~4부",
+    "en": "Linear Discriminant Analysis (Part 1-4)"
+   },
+   "page": "part1_lda",
+   "anchor": "#export",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:work/fisher1936use",
+   "type": "Work",
+   "label": {
+    "ko": "Fisher (1936)",
+    "en": "The use of multiple measurements in taxonomic problems"
+   },
+   "page": "part1_lda",
+   "anchor": "#export",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:work/james2013introduction",
+   "type": "Work",
+   "label": {
+    "ko": "James 외 (2013) ISLR",
+    "en": "An Introduction to Statistical Learning"
+   },
+   "page": "part1_lda",
+   "anchor": "#export",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  }
+ ],
+ "edges": [
+  {
+   "s": "lab:concept/feature-vector",
+   "p": "lab:demonstratedBy",
+   "o": "lab:simulation/part1_lda-ch1",
+   "anchor": "#ch1-panel",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:quiz/part1_lda-ch1-1",
+   "p": "lab:assesses",
+   "o": "lab:concept/feature-vector",
+   "anchor": "#ch1-quiz",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/euclidean-distance",
+   "p": "lab:demonstratedBy",
+   "o": "lab:simulation/part1_lda-ch2",
+   "anchor": "#ch2-panel",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:quiz/part1_lda-ch2-1",
+   "p": "lab:assesses",
+   "o": "lab:concept/euclidean-distance",
+   "anchor": "#ch2-quiz",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/nearest-centroid",
+   "p": "lab:demonstratedBy",
+   "o": "lab:simulation/part1_lda-ch3",
+   "anchor": "#ch3-panel",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:quiz/part1_lda-ch3-1",
+   "p": "lab:assesses",
+   "o": "lab:concept/nearest-centroid",
+   "anchor": "#ch3-quiz",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/projection-score",
+   "p": "lab:demonstratedBy",
+   "o": "lab:simulation/part1_lda-ch4",
+   "anchor": "#ch4-panel",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:quiz/part1_lda-ch4-1",
+   "p": "lab:assesses",
+   "o": "lab:concept/projection-score",
+   "anchor": "#ch4-quiz",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/lda",
+   "p": "lab:demonstratedBy",
+   "o": "lab:simulation/part1_lda-ch5",
+   "anchor": "#ch5-panel",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:quiz/part1_lda-ch5-1",
+   "p": "lab:assesses",
+   "o": "lab:concept/lda",
+   "anchor": "#ch5-quiz",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/feature-vector",
+   "p": "lab:prerequisiteOf",
+   "o": "lab:concept/euclidean-distance",
+   "anchor": "#ch2",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/euclidean-distance",
+   "p": "lab:prerequisiteOf",
+   "o": "lab:concept/nearest-centroid",
+   "anchor": "#ch3",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/class-mean",
+   "p": "lab:partOf",
+   "o": "lab:concept/nearest-centroid",
+   "anchor": "#ch3",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/dot-product",
+   "p": "lab:prerequisiteOf",
+   "o": "lab:concept/projection-score",
+   "anchor": "#ch4",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/projection-score",
+   "p": "lab:prerequisiteOf",
+   "o": "lab:concept/lda",
+   "anchor": "#ch5",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/fisher-criterion",
+   "p": "lab:partOf",
+   "o": "lab:concept/lda",
+   "anchor": "#ch5",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/nearest-centroid",
+   "p": "lab:hasLimitation",
+   "o": "lab:concept/lda-shared-shape",
+   "anchor": "#ch5",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/lda",
+   "p": "lab:hasLimitation",
+   "o": "lab:concept/lda-shared-shape",
+   "anchor": "#ch5",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/lda-shared-shape",
+   "p": "lab:addressedBy",
+   "o": "lab:concept/qda",
+   "anchor": "#ch5",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/flag-analogy",
+   "p": "lab:analogyOf",
+   "o": "lab:concept/class-mean",
+   "anchor": "#ch3",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/shadow-analogy",
+   "p": "lab:analogyOf",
+   "o": "lab:concept/projection-score",
+   "anchor": "#ch4",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/lda",
+   "p": "lab:broader",
+   "o": "lab:topic/supervised-learning",
+   "anchor": "#ch5",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/nearest-centroid",
+   "p": "lab:broader",
+   "o": "lab:topic/supervised-learning",
+   "anchor": "#ch3",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/feature",
+   "p": "lab:partOf",
+   "o": "lab:concept/feature-vector",
+   "anchor": "#ch1",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/feature-vector",
+   "p": "lab:broader",
+   "o": "lab:topic/linear-algebra",
+   "anchor": "#ch1",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/dot-product",
+   "p": "lab:broader",
+   "o": "lab:topic/linear-algebra",
+   "anchor": "#ch4",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/lda",
+   "p": "lab:assertedIn",
+   "o": "lab:work/fisher1936use",
+   "anchor": "#ch5",
+   "confidence": "high"
+  }
+ ]
+}

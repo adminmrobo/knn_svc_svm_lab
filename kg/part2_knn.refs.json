@@ -1,0 +1,67 @@
+[
+ {
+  "type": "webpage",
+  "title": "Distance & Kernel Methods",
+  "author": [
+   {
+    "literal": "MLTut"
+   }
+  ],
+  "id": "mltut2026distance",
+  "lab": {
+   "work": "lab:work/mltut2026distance",
+   "role": "primary",
+   "supports": [],
+   "locs": [],
+   "verified": {
+    "title": true,
+    "author": true,
+    "year": false,
+    "container": false,
+    "pages": false,
+    "doi": false
+   },
+   "checkedBy": "저자가 준 인포그래픽 그림에서 옮김",
+   "checkedSource": "author-memory"
+  }
+ },
+ {
+  "type": "article-journal",
+  "title": "Nearest neighbor pattern classification",
+  "author": [
+   {
+    "family": "Cover",
+    "given": "T."
+   },
+   {
+    "family": "Hart",
+    "given": "P."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     1967
+    ]
+   ]
+  },
+  "container-title": "IEEE Transactions on Information Theory",
+  "id": "cover1967nearest",
+  "lab": {
+   "work": "lab:work/cover1967nearest",
+   "role": "background",
+   "supports": [],
+   "locs": [],
+   "verified": {
+    "title": true,
+    "author": true,
+    "year": true,
+    "container": true,
+    "pages": false,
+    "doi": false
+   },
+   "checkedBy": "작성자가 알고 있는 서지로 적음(외부 대조 안 함)",
+   "checkedSource": "author-memory"
+  }
+ }
+]

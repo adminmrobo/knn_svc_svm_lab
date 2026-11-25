@@ -1,0 +1,110 @@
+[
+ {
+  "type": "webpage",
+  "title": "Linear Discriminant Analysis (Part 1-4)",
+  "author": [
+   {
+    "literal": "eeanimation"
+   }
+  ],
+  "id": "eeanimation2026lda",
+  "lab": {
+   "work": "lab:work/eeanimation2026lda",
+   "role": "primary",
+   "supports": [],
+   "locs": [],
+   "verified": {
+    "title": true,
+    "author": true,
+    "year": false,
+    "container": false,
+    "pages": false,
+    "doi": false
+   },
+   "checkedBy": "저자가 준 인포그래픽 그림에서 옮김",
+   "checkedSource": "author-memory"
+  }
+ },
+ {
+  "type": "article-journal",
+  "title": "The use of multiple measurements in taxonomic problems",
+  "author": [
+   {
+    "family": "Fisher",
+    "given": "R. A."
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     1936
+    ]
+   ]
+  },
+  "container-title": "Annals of Eugenics",
+  "id": "fisher1936use",
+  "lab": {
+   "work": "lab:work/fisher1936use",
+   "role": "background",
+   "supports": [],
+   "locs": [],
+   "verified": {
+    "title": true,
+    "author": true,
+    "year": true,
+    "container": true,
+    "pages": false,
+    "doi": false
+   },
+   "checkedBy": "작성자가 알고 있는 서지로 적음(외부 대조 안 함)",
+   "checkedSource": "author-memory"
+  }
+ },
+ {
+  "type": "book",
+  "title": "An Introduction to Statistical Learning",
+  "author": [
+   {
+    "family": "James",
+    "given": "Gareth"
+   },
+   {
+    "family": "Witten",
+    "given": "Daniela"
+   },
+   {
+    "family": "Hastie",
+    "given": "Trevor"
+   },
+   {
+    "family": "Tibshirani",
+    "given": "Robert"
+   }
+  ],
+  "issued": {
+   "date-parts": [
+    [
+     2013
+    ]
+   ]
+  },
+  "publisher": "Springer",
+  "id": "james2013introduction",
+  "lab": {
+   "work": "lab:work/james2013introduction",
+   "role": "background",
+   "supports": [],
+   "locs": [],
+   "verified": {
+    "title": true,
+    "author": true,
+    "year": true,
+    "container": true,
+    "pages": false,
+    "doi": false
+   },
+   "checkedBy": "작성자가 알고 있는 서지로 적음(외부 대조 안 함)",
+   "checkedSource": "author-memory"
+  }
+ }
+]

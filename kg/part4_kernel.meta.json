@@ -1,0 +1,40 @@
+{
+ "title": "무대 들어올리기 — 곧은 줄을 휘게 만드는 커널",
+ "number": "파트 4",
+ "series": "거리로 가르는 분류 대회",
+ "about": [
+  "lab:concept/nonlinear-separability",
+  "lab:concept/feature-map",
+  "lab:concept/kernel-trick",
+  "lab:concept/rbf-kernel",
+  "lab:concept/rbf-svm"
+ ],
+ "basedOn": [
+  "mltut2026distance"
+ ],
+ "educationalLevel": "입문",
+ "creator": [
+  {
+   "name": "안상선",
+   "role": "author",
+   "url": "https://adminmrobo.github.io/who_am_i/who_am_i.html"
+  }
+ ],
+ "contributor": [
+  {
+   "name": "AI 보조 제작",
+   "role": "assistant"
+  }
+ ],
+ "date": "2026-11-25",
+ "version": "1.0",
+ "language": [
+  "ko"
+ ],
+ "license": "",
+ "url": "https://adminmrobo.github.io/knn_svc_svm_lab/part4_kernel.html",
+ "registry": "KG_00_registry 0.2",
+ "learningResourceType": "interactive explainer",
+ "seeAlso": "",
+ "suggestedCitation": "안상선 (2026). 무대 들어올리기 — 곧은 줄을 휘게 만드는 커널. 거리로 가르는 분류 대회 파트 4, v1.0."
+}

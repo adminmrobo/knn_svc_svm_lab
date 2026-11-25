@@ -1,0 +1,40 @@
+{
+ "title": "가장 넓은 복도 — 경계 근처 몇 명만 기억하는 SVM과 SVC",
+ "number": "파트 3",
+ "series": "거리로 가르는 분류 대회",
+ "about": [
+  "lab:concept/hyperplane",
+  "lab:concept/maximal-margin",
+  "lab:concept/support-vector",
+  "lab:concept/soft-margin",
+  "lab:concept/svm"
+ ],
+ "basedOn": [
+  "mltut2026distance"
+ ],
+ "educationalLevel": "입문",
+ "creator": [
+  {
+   "name": "안상선",
+   "role": "author",
+   "url": "https://adminmrobo.github.io/who_am_i/who_am_i.html"
+  }
+ ],
+ "contributor": [
+  {
+   "name": "AI 보조 제작",
+   "role": "assistant"
+  }
+ ],
+ "date": "2026-11-25",
+ "version": "1.0",
+ "language": [
+  "ko"
+ ],
+ "license": "",
+ "url": "https://adminmrobo.github.io/knn_svc_svm_lab/part3_svm.html",
+ "registry": "KG_00_registry 0.2",
+ "learningResourceType": "interactive explainer",
+ "seeAlso": "",
+ "suggestedCitation": "안상선 (2026). 가장 넓은 복도 — 경계 근처 몇 명만 기억하는 SVM과 SVC. 거리로 가르는 분류 대회 파트 3, v1.0."
+}

@@ -1,0 +1,794 @@
+{
+ "version": "1.0",
+ "page": "part3_svm",
+ "nodes": [
+  {
+   "id": "lab:concept/hyperplane",
+   "type": "Concept",
+   "label": {
+    "ko": "초평면(경계 줄)",
+    "en": "Hyperplane"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch9",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "w·x + b = 0을 만족하는 점들. 특징이 2개면 직선"
+   }
+  },
+  {
+   "id": "lab:concept/bias-term",
+   "type": "Term",
+   "label": {
+    "ko": "편향 b",
+    "en": "Bias term"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch9",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "줄을 앞뒤로 옮기는 숫자"
+   }
+  },
+  {
+   "id": "lab:concept/maximal-margin",
+   "type": "Method",
+   "label": {
+    "ko": "최대 여유 폭 분류기(하드 마진)",
+    "en": "Maximal margin classifier"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch10",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "두 동아리 사이 복도 폭 2/‖w‖가 가장 넓은 곧은 줄"
+   }
+  },
+  {
+   "id": "lab:concept/margin",
+   "type": "Concept",
+   "label": {
+    "ko": "여유 폭(마진)",
+    "en": "Margin"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch10",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "경계선 양쪽으로 아무도 서 있지 않은 복도의 폭"
+   }
+  },
+  {
+   "id": "lab:concept/norm",
+   "type": "Concept",
+   "label": {
+    "ko": "노름(화살표 길이)",
+    "en": "Vector norm"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch10",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "math",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "‖w‖ = √(w₁² + w₂²)"
+   }
+  },
+  {
+   "id": "lab:concept/support-vector",
+   "type": "Concept",
+   "label": {
+    "ko": "서포트 벡터",
+    "en": "Support vector"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch11",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "복도 벽에 닿아 복도 위치를 정하는 학생"
+   }
+  },
+  {
+   "id": "lab:concept/soft-margin",
+   "type": "Method",
+   "label": {
+    "ko": "서포트 벡터 분류기(SVC, 소프트 마진)",
+    "en": "Support vector classifier"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch12",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "몇 명은 벌점 ξ를 받고 봐주는 복도. 벌점 무게는 C"
+   }
+  },
+  {
+   "id": "lab:concept/c-parameter",
+   "type": "Term",
+   "label": {
+    "ko": "C(벌점 무게)",
+    "en": "Regularization parameter C"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch12",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "크면 깐깐(좁은 복도), 작으면 너그러움(넓은 복도)"
+   }
+  },
+  {
+   "id": "lab:concept/slack",
+   "type": "Term",
+   "label": {
+    "ko": "벌점 ξ",
+    "en": "Slack variable"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch12",
+   "level": 3,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "학생이 자기 편 벽을 넘어온 만큼"
+   }
+  },
+  {
+   "id": "lab:concept/svm",
+   "type": "Method",
+   "label": {
+    "ko": "서포트 벡터 머신(SVM)",
+    "en": "Support vector machine"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch13",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "복도 폭을 넓히는 분류 방법의 가족. 커널로 휠 수 있음"
+   }
+  },
+  {
+   "id": "lab:concept/svr",
+   "type": "Method",
+   "label": {
+    "ko": "서포트 벡터 회귀(SVR)",
+    "en": "Support vector regression"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch13",
+   "level": 3,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "오차 ε 이내는 벌점 없는 튜브로 숫자를 예측"
+   }
+  },
+  {
+   "id": "lab:concept/outlier-sensitivity",
+   "type": "Limitation",
+   "label": {
+    "ko": "이상한 학생 한 명에 흔들림",
+    "en": "Sensitivity to outliers"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch12",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "하드 마진은 섞인 학생 하나 때문에 복도가 거의 사라짐"
+   }
+  },
+  {
+   "id": "lab:concept/linear-only",
+   "type": "Limitation",
+   "label": {
+    "ko": "곧은 줄의 한계",
+    "en": "Linear boundary limitation"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch13",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "곧은 줄로 못 가르는 모양이 있음"
+   }
+  },
+  {
+   "id": "lab:concept/corridor-analogy",
+   "type": "Analogy",
+   "label": {
+    "ko": "넓은 복도",
+    "en": "Corridor analogy"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch10",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "여유 폭을 두 동아리 사이 복도로 비유"
+   }
+  },
+  {
+   "id": "lab:concept/strict-teacher-analogy",
+   "type": "Analogy",
+   "label": {
+    "ko": "깐깐한 선생님과 너그러운 선생님",
+    "en": "Strict vs lenient teacher"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch12",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "family": "classical",
+   "match": [],
+   "domain": [
+    "ai"
+   ],
+   "definition": {
+    "ko": "C의 크기를 선생님의 깐깐함으로 비유"
+   }
+  },
+  {
+   "id": "lab:simulation/part3_svm-ch9",
+   "type": "Simulation",
+   "label": {
+    "ko": "손잡이로 줄 움직이기",
+    "en": "ch9 experiment"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch9-panel",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:quiz/part3_svm-ch9-1",
+   "type": "QuizItem",
+   "label": {
+    "ko": "w = (2, 1), b = −5일 때 학생 (1, 2)의 점수와 편은?",
+    "en": "ch9 quiz"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch9-quiz",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:simulation/part3_svm-ch10",
+   "type": "Simulation",
+   "label": {
+    "ko": "복도 방향을 돌려 가장 넓은 복도 찾기",
+    "en": "ch10 experiment"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch10-panel",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:quiz/part3_svm-ch10-1",
+   "type": "QuizItem",
+   "label": {
+    "ko": "w = (6, 8)이면 복도 폭은?",
+    "en": "ch10 quiz"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch10-quiz",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:simulation/part3_svm-ch11",
+   "type": "Simulation",
+   "label": {
+    "ko": "학생을 집에 보내며 복도 지켜보기",
+    "en": "ch11 experiment"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch11-panel",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:quiz/part3_svm-ch11-1",
+   "type": "QuizItem",
+   "label": {
+    "ko": "서포트 벡터가 아닌 학생을 데이터에서 지우면?",
+    "en": "ch11 quiz"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch11-quiz",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:simulation/part3_svm-ch12",
+   "type": "Simulation",
+   "label": {
+    "ko": "C 손잡이로 복도 깐깐함 바꾸기",
+    "en": "ch12 experiment"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch12-panel",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:quiz/part3_svm-ch12-1",
+   "type": "QuizItem",
+   "label": {
+    "ko": "C를 아주 크게 하면 어떤 일이 생기기 쉬울까요?",
+    "en": "ch12 quiz"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch12-quiz",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:simulation/part3_svm-ch13",
+   "type": "Simulation",
+   "label": {
+    "ko": "SVR — 집까지 거리로 등교 시간 예측하기",
+    "en": "ch13 experiment"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch13-panel",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:quiz/part3_svm-ch13-1",
+   "type": "QuizItem",
+   "label": {
+    "ko": "scikit-learn에서 SVC라는 이름의 도구는 무엇을 하나요?",
+    "en": "ch13 quiz"
+   },
+   "page": "part3_svm",
+   "anchor": "#ch13-quiz",
+   "level": 1,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:work/mltut2026distance",
+   "type": "Work",
+   "label": {
+    "ko": "MLTut 인포그래픽 「Distance & Kernel Methods」",
+    "en": "Distance & Kernel Methods"
+   },
+   "page": "part3_svm",
+   "anchor": "#export",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:work/cortes1995support",
+   "type": "Work",
+   "label": {
+    "ko": "Cortes & Vapnik (1995)",
+    "en": "Support-vector networks"
+   },
+   "page": "part3_svm",
+   "anchor": "#export",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:work/boser1992training",
+   "type": "Work",
+   "label": {
+    "ko": "Boser, Guyon & Vapnik (1992)",
+    "en": "A training algorithm for optimal margin classifiers"
+   },
+   "page": "part3_svm",
+   "anchor": "#export",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:work/james2013introduction",
+   "type": "Work",
+   "label": {
+    "ko": "James 외 (2013) ISLR",
+    "en": "An Introduction to Statistical Learning"
+   },
+   "page": "part3_svm",
+   "anchor": "#export",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  },
+  {
+   "id": "lab:work/platt1998sequential",
+   "type": "Work",
+   "label": {
+    "ko": "Platt (1998) SMO",
+    "en": "Sequential minimal optimization: A fast algorithm for training support vector machines"
+   },
+   "page": "part3_svm",
+   "anchor": "#export",
+   "level": 2,
+   "status": "known",
+   "confidence": "high",
+   "coverage": "explained",
+   "match": []
+  }
+ ],
+ "edges": [
+  {
+   "s": "lab:concept/hyperplane",
+   "p": "lab:demonstratedBy",
+   "o": "lab:simulation/part3_svm-ch9",
+   "anchor": "#ch9-panel",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:quiz/part3_svm-ch9-1",
+   "p": "lab:assesses",
+   "o": "lab:concept/hyperplane",
+   "anchor": "#ch9-quiz",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/maximal-margin",
+   "p": "lab:demonstratedBy",
+   "o": "lab:simulation/part3_svm-ch10",
+   "anchor": "#ch10-panel",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:quiz/part3_svm-ch10-1",
+   "p": "lab:assesses",
+   "o": "lab:concept/maximal-margin",
+   "anchor": "#ch10-quiz",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/support-vector",
+   "p": "lab:demonstratedBy",
+   "o": "lab:simulation/part3_svm-ch11",
+   "anchor": "#ch11-panel",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:quiz/part3_svm-ch11-1",
+   "p": "lab:assesses",
+   "o": "lab:concept/support-vector",
+   "anchor": "#ch11-quiz",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/soft-margin",
+   "p": "lab:demonstratedBy",
+   "o": "lab:simulation/part3_svm-ch12",
+   "anchor": "#ch12-panel",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:quiz/part3_svm-ch12-1",
+   "p": "lab:assesses",
+   "o": "lab:concept/soft-margin",
+   "anchor": "#ch12-quiz",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/svr",
+   "p": "lab:demonstratedBy",
+   "o": "lab:simulation/part3_svm-ch13",
+   "anchor": "#ch13-panel",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:quiz/part3_svm-ch13-1",
+   "p": "lab:assesses",
+   "o": "lab:concept/svr",
+   "anchor": "#ch13-quiz",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/projection-score",
+   "p": "lab:prerequisiteOf",
+   "o": "lab:concept/hyperplane",
+   "anchor": "#ch9",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/bias-term",
+   "p": "lab:partOf",
+   "o": "lab:concept/hyperplane",
+   "anchor": "#ch9",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/hyperplane",
+   "p": "lab:prerequisiteOf",
+   "o": "lab:concept/maximal-margin",
+   "anchor": "#ch10",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/norm",
+   "p": "lab:prerequisiteOf",
+   "o": "lab:concept/margin",
+   "anchor": "#ch10",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/margin",
+   "p": "lab:partOf",
+   "o": "lab:concept/maximal-margin",
+   "anchor": "#ch10",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/support-vector",
+   "p": "lab:partOf",
+   "o": "lab:concept/maximal-margin",
+   "anchor": "#ch11",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/maximal-margin",
+   "p": "lab:hasLimitation",
+   "o": "lab:concept/outlier-sensitivity",
+   "anchor": "#ch12",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/outlier-sensitivity",
+   "p": "lab:addressedBy",
+   "o": "lab:concept/soft-margin",
+   "anchor": "#ch12",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/c-parameter",
+   "p": "lab:partOf",
+   "o": "lab:concept/soft-margin",
+   "anchor": "#ch12",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/slack",
+   "p": "lab:partOf",
+   "o": "lab:concept/soft-margin",
+   "anchor": "#ch12",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/soft-margin",
+   "p": "lab:partOf",
+   "o": "lab:concept/svm",
+   "anchor": "#ch13",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/svr",
+   "p": "lab:relatedTo",
+   "o": "lab:concept/svm",
+   "anchor": "#ch13",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/svm",
+   "p": "lab:hasLimitation",
+   "o": "lab:concept/linear-only",
+   "anchor": "#ch13",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/knn-cost",
+   "p": "lab:addressedBy",
+   "o": "lab:concept/support-vector",
+   "anchor": "#ch11",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/svm",
+   "p": "lab:contrastsWith",
+   "o": "lab:concept/knn",
+   "anchor": "#battle",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/svm",
+   "p": "lab:contrastsWith",
+   "o": "lab:concept/lda",
+   "anchor": "#why",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/corridor-analogy",
+   "p": "lab:analogyOf",
+   "o": "lab:concept/margin",
+   "anchor": "#ch10",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/strict-teacher-analogy",
+   "p": "lab:analogyOf",
+   "o": "lab:concept/c-parameter",
+   "anchor": "#ch12",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/svm",
+   "p": "lab:broader",
+   "o": "lab:topic/svm",
+   "anchor": "#ch13",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/maximal-margin",
+   "p": "lab:broader",
+   "o": "lab:topic/svm",
+   "anchor": "#ch10",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/soft-margin",
+   "p": "lab:broader",
+   "o": "lab:topic/svm",
+   "anchor": "#ch12",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/soft-margin",
+   "p": "lab:assertedIn",
+   "o": "lab:work/cortes1995support",
+   "anchor": "#ch12",
+   "confidence": "high"
+  },
+  {
+   "s": "lab:concept/svm",
+   "p": "lab:assertedIn",
+   "o": "lab:work/james2013introduction",
+   "anchor": "#ch13",
+   "confidence": "high"
+  }
+ ]
+}
