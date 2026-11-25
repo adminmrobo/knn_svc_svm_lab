@@ -139,7 +139,7 @@ def footer(P,pre=''):
 def page(P,idx):
     kgd,refs,meta=build_kg(P)
     h=head(P)+nav(P['file'])
-    h+=f'<figure class="cover"><img src="{P["cover"]}" alt="{E(P["cover_alt"])}" width="1920" height="1080"></figure>'
+    h+=f'<figure class="cover"><img src="{P["cover"]}" alt="{E(P["cover_alt"])}" width="2048" height="1152"></figure>'
     h+=f'<header class="hero" id="top"><div class="wrap"><div class="kicker">{SERIES} · {P["num"]}</div><h1>{P["title"]}</h1><p class="sub">{P["sub"]}</p>{scoreboard(idx)}<div style="margin-top:24px">{dialog(P["hero"])}</div></div></header>'
     w,y,u=P['plain']
     h+=f'''<section class="sec" id="plain"><div class="wrap stack"><h2>처음 오신 분께 — 이 페이지를 3줄로</h2>

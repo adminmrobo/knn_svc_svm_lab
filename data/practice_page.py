@@ -33,6 +33,7 @@ def build(g):
     P=dict(slug='practice',file='practice/index.html',num='마지막 장',title='실전 연습장 — 네 사업장에서 손잡이 돌려 보기',
       desc='LDA·KNN·선형 SVM·RBF 커널 SVM을 가상 사업장에서 직접 조작하는 시뮬레이터. 사업장마다 미션 3개, 자동 판정.',og='assets/img/og_practice.webp')
     h=head(P,'../').replace('href="../assets/engine.css">','href="../assets/engine.css"><link rel="stylesheet" href="practice.css">')+nav('practice')
+    h+='<figure class="cover"><img src="../assets/img/cover_practice.webp" alt="운동장이 내다보이는 조종실. 벽의 화면 네 개에 깃발, 별과 동그라미, 노란 복도, 들린 무대가 보이고, 하루가 손잡이를 돌리며 박사·초파리·시아·모아·주판봇·X1~X3가 지켜본다" width="2048" height="1152"></figure>'
     h+=f'''<header class="hero"><div class="wrap"><div class="kicker">{SERIES} · 마지막 장</div><h1>실전 연습장</h1><p class="sub">네 파트에서 배운 손잡이를 가상 사업장에서 직접 돌려 봅니다. 숫자는 모두 교육용 예시이며, 실제 학교·학생과 관계없어요. 여기서 <b>검증 학생</b>은 손잡이를 고를 때 쓰는 "처음 보는 학생"이에요. 주소 끝에 #flag, #knn, #corridor, #stage를 붙이면 그 사업장이 바로 열려요.</p>
 <div style="margin-top:18px">{dialog([('doc','smile','사업장마다 미션이 세 개예요. ① 가장 좋은 손잡이 찾기 ② 함정 직접 보기 ③ 조건을 바꿔도 결론이 유지되는지 확인. 판정은 검증 학생 점수로만 합니다.')])}</div></div></header>
 <main class="wrap stack" style="padding-bottom:40px"><div class="tabs" role="tablist" aria-label="사업장 고르기"><button data-t="flag">① 깃발 본부 (LDA)</button><button data-t="knn">② 동아리 배정 사무실 (KNN)</button><button data-t="corridor">③ 복도 공사 현장 (SVM·SVC)</button><button data-t="stage">④ 무대 조명실 (커널)</button></div>
