@@ -13,7 +13,7 @@ const corridor=(P,w,b,opts)=>{const n=Math.hypot(w[0],w[1]),u=[w[0]/n,w[1]/n];ba
   let t=`<div class="big">${ok} / ${S.Xtr.length}명 제 편</div><span class="note">빨강 테두리 = 줄 반대편에 선 학생</span>`;
   if(sel!==null){const p=S.Xtr[sel],sc=w[0]*p[0]+w[1]*p[1]+b;t+=`<br>고른 학생 (${p.join(', ')}): ${f1(w[0])}×${p[0]} + ${f1(w[1])}×${p[1]} + (${f1(b)}) = <b>${f2(sc)}</b> → ${sc>0?'빨강 쪽':'파랑 쪽'}`;}else t+='<br><span class="note">학생을 누르면 점수 계산을 보여 줘요.</span>';
   document.getElementById('r9').innerHTML=t;}
- P.onClick((x,y)=>{let bi=-1,bd=0.4;S.Xtr.forEach((p,i)=>{const d=Math.hypot(p[0]-x,p[1]-y);if(d<bd){bd=d;bi=i;}});sel=bi>=0?bi:null;draw();});
+ P.onClick((x,y)=>{let bi=-1,bd=0.4;S.Xtr.forEach((p,i)=>{const d=Math.hypot(p[0]-x,p[1]-y);if(d<bd){bd=d;bi=i;}});sel=bi>=0?bi:null;draw();},{pick:()=>S.Xtr});
  [a,bb,c].forEach(e=>e.oninput=draw);document.getElementById('b9a').onclick=()=>{a.value=1;bb.value=1;c.value=-6;draw();};draw();})();
 /* 챕터 10 */
 function bestGap(X,y,deg){const u=[Math.cos(deg*Math.PI/180),Math.sin(deg*Math.PI/180)];let lo=1e9,hi=-1e9;X.forEach((p,i)=>{const z=u[0]*p[0]+u[1]*p[1];if(y[i])lo=Math.min(lo,z);else hi=Math.max(hi,z);});return {u,lo,hi,gap:lo-hi};}
@@ -35,7 +35,7 @@ const hard=ML.svm(S.Xtr,S.ytr,{C:1000});
   S.Xtr.forEach((p,i)=>off.has(i)?P.dot('main',p[0],p[1],S.ytr[i],{fill:'#cfcbd9'}):P.dot('main',p[0],p[1],S.ytr[i],{ring:svIdx.has(i)?'#22a45d':null}));
   const r=document.getElementById('r11');if(!m){r.innerHTML='두 동아리가 모두 있어야 복도를 낼 수 있어요.';return;}
   r.innerHTML=`<div class="big">복도 폭 ${f2(m.margin)}눈금</div>남은 학생 ${idx.length}명 중 서포트 벡터 <b>${m.sv.length}명</b><br>`+m.sv.map(k=>{const p=X[k],sc=m.w[0]*p[0]+m.w[1]*p[1]+m.bias;return `(${p.join(', ')}): y × 점수 = ${f2((y[k]?1:-1)*sc)}`;}).join('<br>');}
- P.onClick((x,y)=>{let bi=-1,bd=0.4;S.Xtr.forEach((p,i)=>{const d=Math.hypot(p[0]-x,p[1]-y);if(d<bd){bd=d;bi=i;}});if(bi>=0){off.has(bi)?off.delete(bi):off.add(bi);draw();}});
+ P.onClick((x,y)=>{let bi=-1,bd=0.4;S.Xtr.forEach((p,i)=>{const d=Math.hypot(p[0]-x,p[1]-y);if(d<bd){bd=d;bi=i;}});if(bi>=0){off.has(bi)?off.delete(bi):off.add(bi);draw();}},{pick:()=>S.Xtr});
  document.getElementById('b11a').onclick=()=>{off.clear();draw();};draw();})();
 /* 챕터 12 */
 const Cs=[0.1,0.3,1,3,10,100,1000],Xo=S.Xtr.concat([D.outlier]),yo=S.ytr.concat([1]);

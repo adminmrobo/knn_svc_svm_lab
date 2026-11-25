@@ -151,6 +151,11 @@ def page(P,idx):
     h+=f'<section class="sec" id="map"><div class="wrap stack"><h2>큰 그림 — 지금 어디쯤?</h2>{bigmap(P["slug"])}<p>{P["where"]}</p></div></section>'
     for i,c in enumerate(P['chapters']): h+=chapter(c,i)
     h+=battle(P['battle'])
+    if P.get('exam'):
+        h+=f'<section class="sec" id="exam"><div class="wrap stack"><div><div class="kicker">{P["num"]} 쪽지시험</div><h2>박사의 쪽지시험 — 5문항</h2><p class="note">처음 고른 답으로 채점해요. 틀려도 다시 눌러 해설을 볼 수 있어요. 기록은 저장하지 않습니다.</p></div>'
+        h+=dialog([('doc','smile','계산기는 필요 없어요. 작은 숫자로 손계산 한 번이면 됩니다. 막히면 문항 아래 해설과 챕터 링크를 보세요.')])
+        h+='<div class="exam">'+''.join(f'<div class="quiz" id="exam-{i+1}" data-ans="{q["ans"]}" data-ok="{E(q["ok"])}" data-no="{E(q["no"])}" data-ref="{q["ref"]}" data-refname="{E(q["refname"])}"><div class="q">{i+1}. {q["q"]}</div><div class="opts">'+''.join(f'<button type="button">{o}</button>' for o in q['opts'])+f'</div><div class="fb" aria-live="polite"></div><div class="note">관련: <a href="{q["ref"]}">{q["refname"]}</a></div></div>' for i,q in enumerate(P['exam']))
+        h+='<p class="exam-score" aria-live="polite">아직 푼 문항이 없어요.</p></div></div></section>'
     h+=f'<section class="sec" id="summary"><div class="wrap stack"><h2>정리</h2>{P["summary"]}</div></section>'
     h+=f'<section class="sec" id="outro"><div class="wrap stack"><h2>아웃트로</h2>{dialog(P["outro"])}</div></section>'
     h+=kg_section(P,kgd['nodes'],kgd['edges'])+export_section(P)

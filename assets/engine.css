@@ -130,3 +130,4 @@ footer{padding:40px 0 60px;border-top:1px solid var(--rule);color:var(--sub);fon
 .mini svg{width:100%;height:auto;display:block}
 .ctrl label{display:block}.ctrl label input{display:block;margin-top:4px}
 .ez-math td:first-child{white-space:nowrap}
+.kbdhint{margin-top:6px;font-size:.85rem}.exam{border:2px solid #ddd3f6;border-radius:16px;padding:20px;background:#fbfaff}.exam-score{font-size:1rem;min-height:1.4em}

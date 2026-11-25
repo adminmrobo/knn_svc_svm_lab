@@ -11,7 +11,7 @@ const knnAcc=(Xtr,ytr,Xte,yte,k,f)=>{f=f||(v=>v);const A=Xtr.map(f);return ML.ac
   const lst=r.nb.map((n,j)=>`${j+1}. ${K.y[n.i]?'<span style="color:#e0533d">빨강</span>':'<span style="color:#3d7bd9">파랑</span>'} (${K.X[n.i].join(', ')}) 거리 ${f2(n.d)}${reg?' · '+K.t[n.i]+'분':''}`).join('<br>');
   if(reg)out.innerHTML=`<b>가까운 ${k}명의 등교 시간 평균</b><div class="big">${f1(r.label)}분</div>${lst}`;
   else{const v0=r.votes[0]||0,v1=r.votes[1]||0;out.innerHTML=`<b>투표</b> 파랑 ${v0}표 · 빨강 ${v1}표<div class="big">→ ${r.label?'<span style="color:#e0533d">빨강(축구부)</span>':'<span style="color:#3d7bd9">파랑(독서부)</span>'}</div>${lst}`;}}
- P.onClick((x,y)=>{s=[Math.round(x*10)/10,Math.round(y*10)/10];draw();});sl.oninput=draw;
+ P.onClick((x,y)=>{s=[Math.round(x*10)/10,Math.round(y*10)/10];draw();},{at:()=>s});sl.oninput=draw;
  const a=document.getElementById('b6a'),b=document.getElementById('b6b');a.onclick=()=>{reg=false;a.classList.add('on');b.classList.remove('on');draw();};b.onclick=()=>{reg=true;b.classList.add('on');a.classList.remove('on');draw();};
  document.getElementById('b6c').onclick=()=>{s=[2.5,1.9];draw();};draw();})();
 /* 챕터 7 */
@@ -34,7 +34,7 @@ const Fr=D.fruit,mm=ML.minmax(Fr.Xtr);
   P.points('main',Fr.Xtr,Fr.ytr,i=>({ring:r.nb.some(n=>n.i===i)?'#22a45d':null}));P.dot('over',s[0],s[1],'star');
   const acc=knnAcc(Fr.Xtr,Fr.ytr,Fr.Xte,Fr.yte,k,f);
   document.getElementById('r8').innerHTML=`전학생 (${Math.round(s[0])}분, ${f1(s[1])}시간)${sc?` → 맞춘 값 (${f2(mm.f(s)[0])}, ${f2(mm.f(s)[1])})`:''}<br>이웃 ${k}명 투표 → <b>${r.label?'축구부':'독서부'}</b><div class="big">처음 보는 학생 맞힌 비율 ${pct(acc)}</div><span class="note">${sc?'두 특징이 같은 무게로 들어갑니다.':'운동 시간(분) 차이가 거리를 거의 다 정합니다. 이웃이 세로로 길게 뽑혀요.'}</span>`;}
- P.onClick((x,y)=>{s=[Math.round(x),Math.round(y*10)/10];draw();});sl.oninput=draw;
+ P.onClick((x,y)=>{s=[Math.round(x),Math.round(y*10)/10];draw();},{at:()=>s});sl.oninput=draw;
  const a=document.getElementById('b8a'),b=document.getElementById('b8b');a.onclick=()=>{sc=false;a.classList.add('on');b.classList.remove('on');draw();};b.onclick=()=>{sc=true;b.classList.add('on');a.classList.remove('on');draw();};draw();})();
 /* 라운드 2 */
 const fly=knnAcc(Fr.Xtr,Fr.ytr,Fr.Xte,Fr.yte,7,mm.f),robo=knnAcc(Fr.Xtr,Fr.ytr,Fr.Xte,Fr.yte,1);

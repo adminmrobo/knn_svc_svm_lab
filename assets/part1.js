@@ -6,7 +6,7 @@ const F=D.flags, mean=(X,y,c)=>{const p=X.filter((_,i)=>y[i]===c);return [p.redu
  function draw(){P.clear('main');P.clear('over');P.points('main',F.X,F.y,{fill:undefined});P.arrow('over',0,0,s[0],s[1],'#7b4fd6');P.dot('over',s[0],s[1],'star');
   P.line('over',s[0],0,s[0],s[1],{stroke:'#e8554e','stroke-dasharray':'4 3','stroke-width':1.5});P.line('over',0,s[1],s[0],s[1],{stroke:'#3fb37f','stroke-width':1.5,'stroke-dasharray':'4 3'});
   document.getElementById('r1').innerHTML=`<div class="big">x = (${f1(s[0])}, ${f1(s[1])})</div><span style="color:#c0392b">X1 · 가로 위치 x₁ = ${f1(s[0])}</span><br><span style="color:#23744f">X2 · 세로 위치 x₂ = ${f1(s[1])}</span><br>숫자가 2개인 카드 → d = 2`;}
- P.onClick((x,y)=>{s=[x,y];draw();});draw();})();
+ P.onClick((x,y)=>{s=[x,y];draw();},{at:()=>s});draw();})();
 /* 챕터 2 */
 (function(){const P=Plot(document.getElementById('p2'),{aria:'두 점 사이 거리'});let A=[1,2],B=[4,6];
  function draw(){P.clear('main');P.clear('over');P.line('main',A[0],A[1],B[0],A[1],{stroke:'#e8554e','stroke-dasharray':'5 4'});P.line('main',B[0],A[1],B[0],B[1],{stroke:'#3fb37f','stroke-dasharray':'5 4'});
@@ -24,7 +24,7 @@ const F=D.flags, mean=(X,y,c)=>{const p=X.filter((_,i)=>y[i]===c);return [p.redu
   if(flags){P.flag('over',m0[0],m0[1],'#3d7bd9');P.flag('over',m1[0],m1[1],'#e0533d');const d0=Math.hypot(s[0]-m0[0],s[1]-m0[1]),d1=Math.hypot(s[0]-m1[0],s[1]-m1[1]);
    P.line('under',s[0],s[1],m0[0],m0[1],{stroke:'#3d7bd9','stroke-dasharray':'4 3'});P.line('under',s[0],s[1],m1[0],m1[1],{stroke:'#e0533d','stroke-dasharray':'4 3'});
    r.innerHTML=`독서부 깃발 (${f1(m0[0])}, ${f1(m0[1])})까지 <b>${f2(d0)}</b><br>축구부 깃발 (${f1(m1[0])}, ${f1(m1[1])})까지 <b>${f2(d1)}</b><div class="big">→ ${Math.abs(d0-d1)<1e-9?'똑같아요(경계선 위)':(d1<d0?'<span style="color:#e0533d">축구부</span>':'<span style="color:#3d7bd9">독서부</span>')}</div>지도를 눌러 전학생을 옮겨 보세요.`;}}
- P.onClick((x,y)=>{s=[x,y];draw();});
+ P.onClick((x,y)=>{s=[x,y];draw();},{at:()=>s});
  document.getElementById('b3a').onclick=e=>{flags=true;e.target.classList.add('on');draw();};
  document.getElementById('b3b').onclick=e=>{flags=true;bd=!bd;e.target.classList.toggle('on',bd);draw();};
  document.getElementById('b3c').onclick=()=>{s=[2,2];draw();};draw();})();
@@ -39,7 +39,7 @@ const F=D.flags, mean=(X,y,c)=>{const p=X.filter((_,i)=>y[i]===c);return [p.redu
   P.points('main',F.X,F.y);P.flag('over',m0[0],m0[1],'#3d7bd9');P.flag('over',m1[0],m1[1],'#e0533d');P.arrow('over',m0[0],m0[1],m1[0],m1[1],'#7b4fd6');P.dot('over',s[0],s[1],'star');
   const zs=z(s);S.draw([{vals:F.X.filter((_,i)=>F.y[i]===0).map(z),cls:0},{vals:F.X.filter((_,i)=>F.y[i]===1).map(z),cls:1},{vals:[zs],cls:'star'}],[{v:t,label:'합격선 '+f2(t)}],[Math.min(0,zs-0.5),Math.max(10,zs+0.5)]);
   document.getElementById('r4').innerHTML=`무게 w = (${f1(w[0])}, ${f1(w[1])})<br>점수 z = ${f1(w[0])} × ${f1(s[0])} + ${f1(w[1])} × ${f1(s[1])} = <b>${f2(zs)}</b><div class="big">${zs>t?'<span style="color:#e0533d">'+f2(zs)+' &gt; '+f2(t)+' → 축구부</span>':'<span style="color:#3d7bd9">'+f2(zs)+' ≤ '+f2(t)+' → 독서부</span>'}</div>`;}
- P.onClick((x,y)=>{s=[Math.round(x*10)/10,Math.round(y*10)/10];draw();});
+ P.onClick((x,y)=>{s=[Math.round(x*10)/10,Math.round(y*10)/10];draw();},{at:()=>s});
  document.getElementById('b4a').onclick=e=>{sh=!sh;e.target.classList.toggle('on',sh);draw();};document.getElementById('b4b').onclick=()=>{s=[2,2];draw();};draw();})();
 /* 챕터 5 + 라운드 1 */
 const L=D.lda,m0=mean(L.Xtr,L.ytr,0),m1=mean(L.Xtr,L.ytr,1);

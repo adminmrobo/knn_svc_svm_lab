@@ -48,9 +48,26 @@ function Plot(host,o){o=Object.assign({xr:[0,6],yr:[0,6],W:360,H:360,xlab:'가�
       el('path',{d:`M${X},${Y-26}L${X+16},${Y-21}L${X},${Y-15}Z`,fill:c,stroke:'#1f1a2e','stroke-width':1},g);el('circle',{cx:X,cy:Y,r:3,fill:'#1f1a2e'},g);return g;},
     pos(ev){const r=svg.getBoundingClientRect();const px=(ev.clientX-r.left)/r.width*W,py=(ev.clientY-r.top)/r.height*H;
       return [Math.max(o.xr[0],Math.min(o.xr[1],ix(px))),Math.max(o.yr[0],Math.min(o.yr[1],iy(py)))];},
-    onClick(cb){svg.style.cursor='crosshair';svg.addEventListener('pointerdown',e=>{if(e.target.dataset.drag)return;cb(...P.pos(e));});},
+    onClick(cb,opt){opt=opt||{};svg.style.cursor='crosshair';svg.addEventListener('pointerdown',e=>{if(e.target.dataset.drag)return;cb(...P.pos(e));});
+      if(opt.pick){let k=-1;P.kbd('방향키로 학생을 차례로 고르고 Enter나 Space로 누르세요',(dx,dy,act)=>{const pts=opt.pick();if(!pts.length)return;
+        if(act){if(k>=0)cb(pts[k][0],pts[k][1]);return;}k=((k<0?0:k+(dx+dy>0?1:-1))+pts.length)%pts.length;
+        P.clear('top');P.add('top','circle',{cx:sx(pts[k][0]),cy:sy(pts[k][1]),r:12,fill:'none',stroke:'#7b4fd6','stroke-width':3,'stroke-dasharray':'4 3'});
+        P.say('고른 학생 ('+pts[k].map(v=>+v.toFixed(2)).join(', ')+')');});}
+      else P.kbd('방향키로 별을 옮겨요 (Shift를 누르면 크게)',(dx,dy,act,big)=>{if(act)return;const c=opt.at?opt.at():[(o.xr[0]+o.xr[1])/2,(o.yr[0]+o.yr[1])/2];
+        const stx=(o.xr[1]-o.xr[0])/60*(big?5:1),sty=(o.yr[1]-o.yr[0])/60*(big?5:1);const x=Math.max(o.xr[0],Math.min(o.xr[1],c[0]+dx*stx)),y=Math.max(o.yr[0],Math.min(o.yr[1],c[1]+dy*sty));
+        cb(x,y);P.say('위치 ('+(+x.toFixed(1))+', '+(+y.toFixed(1))+')');});},
+    /* 키보드 조작: 그림에 초점을 주고 방향키·Enter·Space를 받는다 */
+    kbd(help,fn){svg.setAttribute('tabindex','0');svg.setAttribute('aria-label',(o.aria||'그래프')+'. '+help);
+      if(!P._live){P._live=document.createElement('p');P._live.className='note kbdhint';P._live.setAttribute('aria-live','polite');P._live.textContent='⌨️ '+help;host.appendChild(P._live);}
+      svg.addEventListener('keydown',e=>{const m={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,1],ArrowDown:[0,-1]}[e.key];
+        if(m){e.preventDefault();fn(m[0],m[1],false,e.shiftKey);}else if(e.key==='Enter'||e.key===' '){e.preventDefault();fn(0,0,true,false);}});},
+    say(t){if(P._live)P._live.textContent='⌨️ '+t;},
     /* 끌기: getPts() 반환 배열 중 가까운 점을 잡아 움직임 */
-    drag(getPts,cb){let k=-1;svg.style.cursor='grab';
+    drag(getPts,cb){let k=-1,kk=0;svg.style.cursor='grab';
+      const name=i=>String.fromCharCode(65+i);
+      P.kbd('방향키로 점을 옮기고, Enter나 Space로 옮길 점을 바꿔요 (Shift를 누르면 크게)',(dx,dy,act,big)=>{const pts=getPts();if(act){kk=(kk+1)%pts.length;P.say('지금 옮기는 점: '+name(kk));return;}
+        const p=pts[kk],stx=(o.xr[1]-o.xr[0])/50*(big?5:1),sty=(o.yr[1]-o.yr[0])/50*(big?5:1);
+        cb(kk,Math.max(o.xr[0],Math.min(o.xr[1],p[0]+dx*stx)),Math.max(o.yr[0],Math.min(o.yr[1],p[1]+dy*sty)));P.say('점 '+name(kk)+' ('+getPts()[kk].map(v=>+v.toFixed(1)).join(', ')+')');});
       svg.addEventListener('pointerdown',e=>{const [x,y]=P.pos(e);let best=1e9;getPts().forEach((p,i)=>{const d=Math.hypot(sx(p[0])-sx(x),sy(p[1])-sy(y));if(d<best){best=d;k=i;}});
         if(best>40)k=-1;if(k>=0){svg.setPointerCapture(e.pointerId);cb(k,x,y);}});
       svg.addEventListener('pointermove',e=>{if(k>=0){const [x,y]=P.pos(e);cb(k,x,y);}});
@@ -71,6 +88,13 @@ function Strip(host,o){o=Object.assign({W:360,H:110,lab:'그림자 위치(점수
 function quiz(root){(root||document).querySelectorAll('.quiz').forEach(q=>{const ans=+q.dataset.ans,fb=q.querySelector('.fb');
   q.querySelectorAll('.opts button').forEach((b,i)=>b.addEventListener('click',()=>{q.querySelectorAll('.opts button').forEach(x=>x.classList.remove('right','wrong'));
     b.classList.add(i===ans?'right':'wrong');fb.innerHTML=(i===ans?'<b class="good">맞아요.</b> ':'<b class="badc">다시 한번 볼까요?</b> ')+(i===ans?q.dataset.ok:q.dataset.no);}));});}
+/* 쪽지시험: .exam 안의 퀴즈를 처음 고른 답으로 채점 */
+function exam(){document.querySelectorAll('.exam').forEach(ex=>{const qs=[...ex.querySelectorAll('.quiz')],first={},out=ex.querySelector('.exam-score');
+  qs.forEach((q,i)=>q.querySelectorAll('.opts button').forEach((b,j)=>b.addEventListener('click',()=>{if(i in first)return;first[i]=(j===+q.dataset.ans);
+    const n=Object.keys(first).length,ok=Object.values(first).filter(Boolean).length;
+    if(n<qs.length){out.innerHTML=`푼 문항 ${n} / ${qs.length} · 맞힌 문항 ${ok}`;return;}
+    const miss=qs.filter((_,k)=>!first[k]).map(x=>x.dataset.ref).filter((v,k,a)=>v&&a.indexOf(v)===k);
+    out.innerHTML=`<b>맞힌 문항 ${ok} / ${qs.length}</b> (처음 고른 답 기준) — `+(ok>=4?'좋아요! 다음 파트로 가도 됩니다.':'괜찮아요. 아래 챕터를 한 번 더 보고 오면 충분해요.')+(miss.length?'<br>다시 볼 곳: '+miss.map(r=>`<a href="${r}">${ex.querySelector(`[data-ref="${r}"]`).dataset.refname}</a>`).join(' · '):'');})));});}
 /* 대회: 결과 열기 버튼 → 점수·표정·판정 보이기 */
 function battle(id,res){const s=document.getElementById(id);if(!s)return;const btn=s.querySelector('.open');
   btn.addEventListener('click',()=>{s.querySelector('.sc-fly').textContent=pct(res.fly);s.querySelector('.sc-robo').textContent=pct(res.robo);
@@ -86,6 +110,6 @@ function kg(){const raw=document.getElementById('kg-raw');if(!raw)return;const d
   document.getElementById('kg-edges').innerHTML='<summary>관계 '+d.edges.length+'개 보기</summary><ul>'+d.edges.map(e=>`<li>${lab[e.s]||e.s} <b>${P[e.p]||e.p}</b> ${lab[e.o]||e.o.replace('lab:topic/','주제: ')}</li>`).join('')+'</ul>';
   document.querySelectorAll('[data-dl]').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.dl,txt=document.getElementById(id).textContent;
     const blob=new Blob([JSON.stringify(JSON.parse(txt),null,1)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=b.dataset.name;a.click();}));}
-document.addEventListener('DOMContentLoaded',()=>{if(G.SPR)SPR.paint();quiz();kg();});
+document.addEventListener('DOMContentLoaded',()=>{if(G.SPR)SPR.paint();quiz();exam();kg();});
 G.LAB={Plot,Strip,el,f1,f2,pct,quiz,battle,COL,SOFT};
 })(window);
