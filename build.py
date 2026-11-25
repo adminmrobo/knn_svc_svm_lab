@@ -172,3 +172,19 @@ if __name__=='__main__':
         print(P['file'],page(P,i))
     import index_page; index_page.build(globals())
     import practice_page; practice_page.build(globals())
+    # 그림 주소에 내용 해시를 붙여, 그림을 바꾸면 브라우저·공유 미리보기가 옛 그림을 다시 쓰지 않게 한다
+    import hashlib,glob as _g
+    def _v2(m):
+        f=m.group(2);h=hashlib.md5(open(f.replace('../','') ,'rb').read()).hexdigest()[:8]
+        return f'{m.group(1)}{f}?v={h}'
+    def _v(m):
+        f=m.group(2);h=hashlib.md5(open(f,'rb').read()).hexdigest()[:8]
+        return f'{m.group(1)}{f}?v={h}'
+    for fn in ['index.html','practice/index.html']+[p['file'] for p in PARTS]:
+        t=open(fn).read()
+        # 웹피를 못 여는 브라우저를 위해 PNG(2배) 대체 그림
+        t=re.sub(r'<img src="((?:\.\./)?)assets/img/(cover_[a-z0-9]+)\.webp(?:\?v=[0-9a-f]+)?"',lambda m:f'<picture><source type="image/webp" srcset="{m.group(1)}assets/img/{m.group(2)}.webp"><img src="{m.group(1)}assets/img/{m.group(2)}.png"',t)
+        t=re.sub(r'(<picture>.*?<img [^>]*>)(?!</picture>)',r'\1</picture>',t,flags=re.S)
+        t=re.sub(r'(srcset="|src="(?:\.\./)?|content="'+re.escape(SITE)+r')((?:\.\./)?assets/img/[a-z0-9_]+\.(?:webp|png))(?:\?v=[0-9a-f]+)?',lambda m:_v2(m),t)
+        open(fn,'w').write(t);continue
+        t=re.sub(r'(src="(?:\.\./)?|content="'+re.escape(SITE)+r')(assets/img/[a-z0-9_]+\.webp)(?:\?v=[0-9a-f]+)?',_v,t);open(fn,'w').write(t)
