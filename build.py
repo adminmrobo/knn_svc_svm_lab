@@ -130,7 +130,7 @@ def head(P,pre=''):
 <meta property="og:title" content="{E(P['title'])}"><meta property="og:description" content="{E(P['desc'])}"><meta property="og:type" content="article">
 <meta property="og:image" content="{SITE}{P['og']}"><meta property="og:url" content="{SITE}{P['file']}"><meta name="twitter:card" content="summary_large_image">
 <meta name="citation_title" content="{E(P['title'])}"><meta name="citation_author" content="{AUTHOR}"><meta name="citation_publication_date" content="{TODAY.replace('-','/')}">
-<link rel="stylesheet" href="{pre}assets/engine.css"><script type="application/ld+json">{json.dumps(ld,ensure_ascii=False)}</script></head><body>'''
+<link rel="stylesheet" href="{pre}assets/engine.css?v=2"><script type="application/ld+json">{json.dumps(ld,ensure_ascii=False)}</script></head><body>'''
 def footer(P,pre=''):
     return f'''<footer><div class="wrap stack" style="gap:16px">{P.get('nextprev','')}
 <p>글 · {AUTHOR} (<a href="{AUTHOR_URL}">{AUTHOR_URL}</a>) · {AFFIL}</p>

@@ -11,7 +11,7 @@ p{margin:0}
 .topnav .wrap{display:flex;gap:14px;align-items:center;min-height:50px;overflow-x:auto;white-space:nowrap;font-size:.92rem}
 .topnav a{text-decoration:none;color:var(--sub);padding:4px 8px;border-radius:8px}.topnav a.on,.topnav a:hover{background:var(--soft);color:var(--ink)}
 .topnav b{color:var(--ink)}
-.cover{margin:0;background:#fff}.cover img{display:block;width:100%;height:auto;image-rendering:pixelated;max-height:620px;object-fit:cover}
+.cover{margin:0;background:#fff}.cover img{display:block;width:100%;max-width:1280px;height:auto;margin:0 auto;image-rendering:pixelated}
 header.hero{padding:44px 0 30px}
 .kicker{font-size:.9rem;letter-spacing:.04em;color:var(--sub);font-weight:600}
 .hero h1{font-size:2.3rem;margin:8px 0 10px}.hero .sub{color:var(--sub);font-size:1.12rem}
