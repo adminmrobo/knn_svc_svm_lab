@@ -96,8 +96,12 @@ function exam(){document.querySelectorAll('.exam').forEach(ex=>{const qs=[...ex.
     const miss=qs.filter((_,k)=>!first[k]).map(x=>x.dataset.ref).filter((v,k,a)=>v&&a.indexOf(v)===k);
     out.innerHTML=`<b>맞힌 문항 ${ok} / ${qs.length}</b> (처음 고른 답 기준) — `+(ok>=4?'좋아요! 다음 파트로 가도 됩니다.':'괜찮아요. 아래 챕터를 한 번 더 보고 오면 충분해요.')+(miss.length?'<br>다시 볼 곳: '+miss.map(r=>`<a href="${r}">${ex.querySelector(`[data-ref="${r}"]`).dataset.refname}</a>`).join(' · '):'');})));});}
 /* 대회: 결과 열기 버튼 → 점수·표정·판정 보이기 */
-function battle(id,res){const s=document.getElementById(id);if(!s)return;const btn=s.querySelector('.open');
-  btn.addEventListener('click',()=>{s.querySelector('.sc-fly').textContent=pct(res.fly);s.querySelector('.sc-robo').textContent=pct(res.robo);
+function battle(id,res){const s=document.getElementById(id);if(!s)return;const btn=s.querySelector('.open');let pick=null;
+  const win=Math.abs(res.fly-res.robo)<=0.03?'draw':(res.fly>res.robo?'fly':'robo'),NM={fly:'초파리 팀',robo:'주판봇 팀',draw:'무승부'};
+  s.querySelectorAll('.predict button').forEach(b=>b.addEventListener('click',()=>{if(btn.disabled)return;pick=b.dataset.p;s.querySelectorAll('.predict button').forEach(x=>x.classList.toggle('pick',x===b));}));
+  btn.addEventListener('click',()=>{const fs=document.getElementById('floatscore'),res2=s.parentElement.querySelector('.predres');
+    if(fs){if(win!=='draw'){const k=fs.querySelector('.fs-'+win);k.textContent=+k.textContent+1;}if(pick){fs.querySelector('.fs-me').textContent=(pick===win?1:0)+'/1';}}
+    if(res2)res2.innerHTML=pick?`내 예측: <b>${NM[pick]}</b> → ${pick===win?'<b class="good">적중!</b>':'<b class="badc">빗나감</b> (결과: '+NM[win]+')'}`:'예측 없이 결과를 열었어요. 다음 라운드에서는 먼저 골라 보세요.';s.querySelector('.sc-fly').textContent=pct(res.fly);s.querySelector('.sc-robo').textContent=pct(res.robo);
     s.querySelector('.lead-fly').dataset.spr='fly:'+res.flyMood;s.querySelector('.lead-robo').dataset.spr='robo:'+res.roboMood;s.querySelector('.lead-doc').dataset.spr='doc:'+(res.docMood||'point');
     SPR.paint(s);s.querySelectorAll('.after').forEach(x=>x.classList.remove('hidden'));btn.disabled=true;btn.textContent='결과를 열었습니다';});}
 /* 지식 색인·꾸러미 */

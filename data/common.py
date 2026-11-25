@@ -7,15 +7,15 @@ SITE='https://adminmrobo.github.io/knn_svc_svm_lab/'
 CAST={
  'doc':{'label':'박사','team':'ref','mood':'smile','role':'심판이자 선생님. 판정은 숫자로만 한다'},
  'fly':{'label':'초파리','team':'fly','mood':'point','role':'초파리 팀 조장. 일단 의심하고 확인부터'},
- 'sia':{'label':'인턴1 시아','team':'fly','mood':'smile','role':'그림으로 먼저 이해하는 편'},
- 'haru':{'label':'하루','team':'fly','mood':'smile','role':'수식이 나오면 대신 물어보는 조수'},
- 'x1':{'label':'X1','team':'fly','mood':'smile','role':'특징 요정. 가로 위치 x₁ 담당'},
+ 'sia':{'label':'인턴1 시아','team':'robo','mood':'smile','role':'꼼꼼한 기록, 그림으로 먼저 이해하는 편'},
+ 'haru':{'label':'조수 하루','team':'robo','mood':'smile','role':'수식이 나오면 대신 물어보는 조수'},
+ 'x1':{'label':'X1','team':'fly','mood':'smile','role':'특징(feature) x₁ 담당. 반례 찾기'},
  'robo':{'label':'주판봇','team':'robo','mood':'firm','role':'주판봇 팀 조장. 크고 정교한 방법에 건다'},
- 'moa':{'label':'인턴2 모아','team':'robo','mood':'smile','role':'계산이 빠르고 자신만만'},
- 'x2':{'label':'X2','team':'robo','mood':'smile','role':'특징 요정. 세로 위치 x₂ 담당'},
- 'x3':{'label':'X3','team':'robo','mood':'smile','role':'특징 요정. 높이 담당(파트 4)'},
+ 'moa':{'label':'인턴2 모아','team':'robo','mood':'smile','role':'계산이 빠르고 자신만만, 현장 사례 담당'},
+ 'x2':{'label':'X2','team':'fly','mood':'smile','role':'특징(feature) x₂ 담당. 숫자 확인'},
+ 'x3':{'label':'X3','team':'fly','mood':'smile','role':'특징(feature) 높이 담당(파트 4). 조건 바꿔 보기'},
 }
-TEAMS={'fly':{'name':'초파리 팀','members':['sia','haru','x1']},'robo':{'name':'주판봇 팀','members':['moa','x2','x3']}}
+TEAMS={'fly':{'name':'초파리 팀','members':['x1','x2','x3']},'robo':{'name':'주판봇 팀','members':['haru','sia','moa']}}
 PARTS=[
  {'slug':'part1_lda','file':'part1_lda.html','navname':'1 깃발 찾기 (LDA)','chs':'챕터 1~5','oneline':'두 동아리의 평균 자리(깃발) 중 더 가까운 쪽으로'},
  {'slug':'part2_knn','file':'part2_knn.html','navname':'2 이웃 투표 (KNN)','chs':'챕터 6~8','oneline':'옆에 선 친구 k명에게 물어서 다수결'},

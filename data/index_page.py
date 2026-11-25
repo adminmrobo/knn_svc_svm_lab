@@ -7,7 +7,7 @@ def build(g):
     h+='<figure class="cover"><img src="assets/img/cover_index.webp" alt="픽셀아트 운동장 가운데 심판석에 박사가 앉아 있고, 왼쪽에 초파리 팀(초파리·시아·하루·X1), 오른쪽에 주판봇 팀(주판봇·모아·X2·X3)이 서 있다. 두 팀 사이에 파랑 동그라미, 빨강 세모, 초록 별이 있다" width="2048" height="1152"></figure>'
     h+=f'''<header class="hero" id="top"><div class="wrap"><div class="kicker">연구실 해설 시리즈 · 목차</div><h1>거리로 가르는 분류 대회</h1>
 <p class="sub">전학생이 오면 어느 동아리일까? 운동장 지도 위에서 네 가지 방법(LDA · KNN · SVM·SVC · 커널)으로 겨룹니다. 모든 방법에 공통으로 흐르는 생각은 하나, <b>가까우면 같은 편</b>이에요.</p>
-{scoreboard(0)}<div style="margin-top:24px">{dialog([('doc','smile','어서 와요. 저는 이번 대회의 심판이에요. 판정 기준은 하나, <b>처음 보는 학생을 얼마나 맞혔나</b>입니다.'),('fly','point','초파리 팀은 단순한 방법부터 의심하며 간다.'),('robo','firm','주판봇 팀은 정교한 방법으로 간다.'),('haru','smile','저는 초파리 팀이지만, 수식이 나올 때마다 대신 물어보는 역할도 해요.')])}</div></div></header>'''
+{scoreboard(0)}<div style="margin-top:24px">{dialog([('doc','smile','어서 와요. 저는 이번 대회의 심판이에요. 판정 기준은 하나, <b>처음 보는 학생을 얼마나 맞혔나</b>입니다.'),('robo','firm','주판봇 팀(하루·시아·모아)은 정교한 방법으로 간다.'),('fly','point','초파리 팀(X1·X2·X3)은 단순한 방법부터 의심하며 간다.'),('haru','smile','저는 주판봇 팀이지만, 수식이 나올 때마다 대신 물어보는 역할도 해요.'),('x1','happy','저희 X1·X2·X3는 초파리 팀이에요. 데이터의 특징(feature) x₁, x₂, 그리고 높이를 맡아요.')])}</div></div></header>'''
     h+='''<section class="sec" id="plain"><div class="wrap stack"><h2>처음 오신 분께 — 이 시리즈를 3줄로</h2>
 <div class="three"><div><b>무엇을</b>학생 한 명을 숫자 카드(벡터)로 적고, 거리·평균·복도·닮음 점수로 "어느 편인지" 맞히는 네 가지 방법을 배웁니다.</div><div><b>왜 중요한가</b>분류는 AI가 가장 많이 하는 일입니다. 스팸 거르기, 질병 진단, 불량품 찾기가 모두 "어느 편인가" 문제예요.</div><div><b>실제로는</b>이 네 방법은 지금도 데이터가 작거나 설명이 필요한 곳에서 먼저 시도하는 기본 도구입니다.</div></div>
 <p class="note">행렬·벡터를 처음 배우는 분을 기준으로 썼어요. 중학교 수학(좌표평면, 피타고라스 정리, 평균, 일차함수, 이차함수)만으로 따라올 수 있게 했고, 그 밖의 식은 "더 알고 싶은 분" 상자에 접어 두었습니다.</p></div></section>'''
@@ -16,8 +16,12 @@ def build(g):
 <li>파트마다 라운드가 하나씩, 모두 4라운드입니다.</li><li>두 팀은 같은 <b>훈련 학생</b>으로 방법을 정하고, <b>처음 보는 학생(시험 데이터)</b>을 맞힌 비율로 겨룹니다.</li>
 <li>차이가 3%p 이하면 무승부예요. 점수는 페이지가 직접 계산하고, 결과는 심판이 "결과 열기"를 눌러야 보입니다. 열기 전에 먼저 맞혀 보세요.</li>
 <li>데이터는 이 시리즈를 위해 만든 교육용 예시입니다. 실제 학교나 학생과 관계없어요.</li></ol></div></section>'''
-    h+=f'''<section class="sec" id="map"><div class="wrap stack"><h2>큰 그림 — 네 파트, 열일곱 챕터</h2>{bigmap('')}
-<div class="map" style="grid-template-columns:1fr"><a href="practice/index.html"><div class="n">마지막 장</div><div class="t">실전 연습장</div><div class="d">깃발 본부 · 동아리 배정 사무실 · 복도 공사 현장 · 무대 조명실에서 직접 손잡이를 돌려 보는 시뮬레이터</div></a></div>
+    h+=f'''<section class="sec" id="map"><div class="wrap stack"><h2>차례 — 네 파트, 열일곱 챕터</h2><div class="cards">{''.join(f'<a href="{f}"><img src="assets/img/thumb_{k}.webp" alt="" width="1024" height="448" loading="lazy"><div class="n">{n}</div><div class="t">{t}</div><div class="d">{d}</div><div class="m">{m}</div></a>' for f,k,n,t,d,m in [
+ ('part1_lda.html','part1','파트 1 · 챕터 1~5','깃발 찾기 — LDA','벡터 카드 → 거리 → 깃발(평균) → 그림자 점수 → Fisher 기준. 대결: 깃발 방향 대 가장 잘 갈리는 방향','약 30분 · 실험 5개 · 라운드 1 · 쪽지시험 5문항'),
+ ('part2_knn.html','part2','파트 2 · 챕터 6~8','이웃 투표 — KNN','이웃 투표 → k 고르기 → 단위 맞추기. 대결: 한 명에게 묻기 대 일곱 명에게 묻기','약 20분 · 실험 3개 · 라운드 1 · 쪽지시험 5문항'),
+ ('part3_svm.html','part3','파트 3 · 챕터 9~13','넓은 복도 — SVM·SVC','경계 줄 → 가장 넓은 복도 → 서포트 벡터 → C와 SVC → 이름 정리. 대결: 이웃 셋 대 가장 넓은 복도','약 30분 · 실험 5개 · 라운드 1 · 쪽지시험 5문항'),
+ ('part4_kernel.html','part4','파트 4 · 챕터 14~17','무대 들어올리기 — 커널','한 차원 올리기 → 판자로 가르기 → 커널 = 닮음 점수 → C와 γ. 결승: KNN 대 RBF 커널 SVM','약 30분 · 실험 4개 · 결승 · 쪽지시험 5문항'),
+ ('practice/index.html','practice','마지막 장','실전 연습장','깃발 본부 · 동아리 배정 사무실 · 복도 공사 현장 · 무대 조명실에서 손잡이를 직접 돌려 봅니다','사업장 4곳 · 미션 12개 자동 판정')])}</div>
 <div class="tbl"><table><tr><th>파트</th><th>무엇까지의 거리로 가르나</th><th>새로 나오는 수학</th><th>앞 파트의 한계 → 이 파트의 이유</th></tr>
 <tr><td>1 깃발 찾기 (LDA)</td><td>동아리 평균(깃발)</td><td>벡터, 거리, 평균, 내적</td><td>— (출발점)</td></tr>
 <tr><td>2 이웃 투표 (KNN)</td><td>가장 가까운 k명</td><td>최빈값, 단위 맞추기</td><td>평균 하나로는 무리 모양을 못 읽는다</td></tr>

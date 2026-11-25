@@ -112,14 +112,19 @@ const DEF={
   }
 };
 const X={x1:{n:1,c:'#e8554e',hi:'#ff9a8f',dk:'#9e2f2a'},x2:{n:2,c:'#3fb37f',hi:'#8fe0b8',dk:'#23744f'},x3:{n:3,c:'#3d7bd9',hi:'#8fb8ff',dk:'#25488a'}};
+/* 정식 캐릭터 그림(fruitfly-lab-expressions 표정 라이브러리)을 쓴다. 위 코드 그림은 그림 파일이 없을 때만 대신 쓴다. */
+const BASE=(document.currentScript&&document.currentScript.src||'').replace(/assets\/sprites\.js.*$/,'');
+const MOODS=['smile','happy','spark','shock','think','sad','point','firm'];
 const cache={};
-function draw(who,mood){const key=who+'_'+mood;if(cache[key])return cache[key];
+function draw(who,mood){if(!MOODS.includes(mood))mood='smile';return BASE+'assets/chars/'+who+'_'+mood+'.webp';}
+function drawPixel(who,mood){const key=who+'_'+mood;if(cache[key])return cache[key];
   const o=mk();if(X[who])DEF.x(o,mood,X[who]);else DEF[who](o,mood);props(o,mood);
   outline(o.g,['rgba(190,225,255,0.75)']);
   const c=document.createElement('canvas');c.width=c.height=N;const x=c.getContext('2d');
   for(let y=0;y<N;y++)for(let i=0;i<N;i++)if(o.g[y][i]){x.fillStyle=o.g[y][i];x.fillRect(i,y,1,1);}
   return cache[key]=c.toDataURL();}
 const NAMES={doc:'박사',haru:'하루',sia:'시아',moa:'모아',fly:'초파리',robo:'주판봇',x1:'X1',x2:'X2',x3:'X3'};
-function paint(root){(root||document).querySelectorAll('img[data-spr]').forEach(im=>{const [w,m]=im.dataset.spr.split(':');im.src=draw(w,m||'smile');if(!im.hasAttribute('alt'))im.alt='';im.setAttribute('aria-hidden','true');});}
-G.SPR={draw,paint,NAMES,grid:N,_def:DEF};
+function paint(root){(root||document).querySelectorAll('img[data-spr]').forEach(im=>{const [w,m]=im.dataset.spr.split(':');const src=draw(w,m||'smile');
+  if(im.dataset.cur===src)return;im.dataset.cur=src;im.onerror=()=>{im.onerror=null;im.src=drawPixel(w,m||'smile');};im.src=src;if(!im.hasAttribute('alt'))im.alt='';im.setAttribute('aria-hidden','true');});}
+G.SPR={draw,drawPixel,paint,NAMES,grid:N,_def:DEF};
 })(window);

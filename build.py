@@ -27,7 +27,7 @@ def scoreboard(upto=None, pre=''):
 <div class="ref">{spr('doc','smile')}<div><b>심판 박사</b><br><span class="note">무승부 {w['draw']}번</span></div></div></div>'''
 def cast_html():
     out='<div class="cast">'
-    for k in ['doc','fly','sia','haru','x1','robo','moa','x2','x3']:
+    for k in ['doc','robo','haru','sia','moa','fly','x1','x2','x3']:
         c=CAST[k];t=c['team'];tag={'fly':'초파리 팀','robo':'주판봇 팀','ref':'심판'}[t]
         out+=f'<div class="c {t}">{spr(k,c["mood"],alt="")}<div><b>{c["label"]}</b></div><span class="tag {t}">{tag}</span><div class="r">{c["role"]}</div></div>'
     return out+'</div>'
@@ -78,9 +78,9 @@ def battle(b):
  <div class="side fly"><img class="px lead lead-fly" data-spr="fly:point" alt="" aria-hidden="true"><b>{tf['name']}</b><div class="mem">{mem('fly')}</div><div>{b['fly']}</div><div class="score sc-fly">?</div></div>
  <div class="vs">VS</div>
  <div class="side robo"><img class="px lead lead-robo" data-spr="robo:firm" alt="" aria-hidden="true"><b>{tr['name']}</b><div class="mem">{mem('robo')}</div><div>{b['robo']}</div><div class="score sc-robo">?</div></div>
- <div class="judge"><img class="px lead-doc" data-spr="doc:think" alt="" aria-hidden="true"><button class="go open" type="button">심판 박사: 결과 열기</button></div>
+ <div class="judge"><img class="px lead-doc" data-spr="doc:think" alt="" aria-hidden="true"><div class="predict"><b>먼저 골라 보세요:</b><button type="button" data-p="fly">초파리 팀</button><button type="button" data-p="robo">주판봇 팀</button><button type="button" data-p="draw">무승부</button></div><button class="go open" type="button">심판 박사: 결과 열기</button></div>
 </div>
-<p class="note">결과를 열기 전에 어느 팀이 이길지 먼저 맞혀 보세요. 점수는 이 페이지가 직접 계산합니다(처음 보는 시험 데이터 {b['ntest']}명 기준). 운동장 데이터는 두 방법의 차이가 잘 보이도록 만든 교육용 예시라, 다른 데이터에서는 승패가 달라질 수 있어요.</p>
+<p class="predres note" aria-live="polite"></p><p class="note">결과를 열기 전에 어느 팀이 이길지 먼저 맞혀 보세요. 점수는 이 페이지가 직접 계산합니다(처음 보는 시험 데이터 {b['ntest']}명 기준). 운동장 데이터는 두 방법의 차이가 잘 보이도록 만든 교육용 예시라, 다른 데이터에서는 승패가 달라질 수 있어요.</p>
 <div class="after hidden stack">{dialog(b['after'])}<div class="verdict">{b['verdict']}</div></div>
 </div></section>'''
 def kg_section(P,nodes,edges):
@@ -161,6 +161,9 @@ def page(P,idx):
     h+=kg_section(P,kgd['nodes'],kgd['edges'])+export_section(P)
     h+=f'<script type="application/json" id="kg-raw">{json.dumps(kgd,ensure_ascii=False)}</script><script type="application/ld+json" id="kg-ld">{json.dumps(jsonld(P,kgd["nodes"],kgd["edges"]),ensure_ascii=False)}</script>'
     h+=f'<script type="application/json" id="refs-csl">{json.dumps(refs,ensure_ascii=False)}</script><script type="application/json" id="page-meta">{json.dumps(meta,ensure_ascii=False)}</script>'
+    w={'fly':0,'robo':0,'draw':0}
+    for r in ROUNDS[:idx]: w[r['win']]+=1
+    h+=f'<div class="floatscore" id="floatscore" data-fly="{w["fly"]}" data-robo="{w["robo"]}" aria-live="polite"><span class="f">초파리 팀 <b class="fs-fly">{w["fly"]}</b></span><span class="r">주판봇 팀 <b class="fs-robo">{w["robo"]}</b></span><span>내 예측 <b class="fs-me">0/0</b></span></div>'
     h+=footer(P)+f'<script src="{P["js"]}"></script></body></html>'
     open(P['file'],'w').write(h)
     return len(kgd['nodes']),len(kgd['edges'])
