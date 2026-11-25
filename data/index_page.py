@@ -4,7 +4,7 @@ def build(g):
     P=dict(slug='index',file='index.html',num='목차',title='거리로 가르는 분류 대회 — LDA·KNN·SVM·SVC·커널',
       desc='벡터와 행렬을 처음 배우는 분을 위한 분류 모델 해설 시리즈. 운동장 지도 위에서 초파리 팀과 주판봇 팀이 LDA, KNN, SVM·SVC, 커널로 겨룹니다.',og='assets/img/og_index.webp')
     h=head(P)+nav('index.html')
-    h+='<figure class="cover"><img src="assets/img/cover_index.webp" alt="픽셀아트 운동장 가운데 심판석에 박사가 앉아 있고, 왼쪽에 초파리 팀(초파리·시아·하루·X1), 오른쪽에 주판봇 팀(주판봇·모아·X2·X3)이 서 있다. 두 팀 사이에 파랑 동그라미, 빨강 세모, 초록 별이 있다" width="2048" height="1152"></figure>'
+    h+='<figure class="cover"><img src="assets/img/cover_index.webp" alt="픽셀아트 운동장 가운데 심판석에 박사가 앉아 있고, 왼쪽에 주판봇 팀(주판봇·하루·시아·모아), 오른쪽에 초파리 팀(초파리와 검은 실루엣 X1·X2·X3)이 서 있다. 두 팀 사이에 파랑 동그라미, 빨강 세모, 초록 별이 있다" width="1920" height="1080"></figure>'
     h+=f'''<header class="hero" id="top"><div class="wrap"><div class="kicker">연구실 해설 시리즈 · 목차</div><h1>거리로 가르는 분류 대회</h1>
 <p class="sub">전학생이 오면 어느 동아리일까? 운동장 지도 위에서 네 가지 방법(LDA · KNN · SVM·SVC · 커널)으로 겨룹니다. 모든 방법에 공통으로 흐르는 생각은 하나, <b>가까우면 같은 편</b>이에요.</p>
 {scoreboard(0)}<div style="margin-top:24px">{dialog([('doc','smile','어서 와요. 저는 이번 대회의 심판이에요. 판정 기준은 하나, <b>처음 보는 학생을 얼마나 맞혔나</b>입니다.'),('robo','firm','주판봇 팀(하루·시아·모아)은 정교한 방법으로 간다.'),('fly','point','초파리 팀(X1·X2·X3)은 단순한 방법부터 의심하며 간다.'),('haru','smile','저는 주판봇 팀이지만, 수식이 나올 때마다 대신 물어보는 역할도 해요.'),('x1','happy','저희 X1·X2·X3는 초파리 팀이에요. 데이터의 특징(feature) x₁, x₂, 그리고 높이를 맡아요.')])}</div></div></header>'''
@@ -16,7 +16,7 @@ def build(g):
 <li>파트마다 라운드가 하나씩, 모두 4라운드입니다.</li><li>두 팀은 같은 <b>훈련 학생</b>으로 방법을 정하고, <b>처음 보는 학생(시험 데이터)</b>을 맞힌 비율로 겨룹니다.</li>
 <li>차이가 3%p 이하면 무승부예요. 점수는 페이지가 직접 계산하고, 결과는 심판이 "결과 열기"를 눌러야 보입니다. 열기 전에 먼저 맞혀 보세요.</li>
 <li>데이터는 이 시리즈를 위해 만든 교육용 예시입니다. 실제 학교나 학생과 관계없어요.</li></ol></div></section>'''
-    h+=f'''<section class="sec" id="map"><div class="wrap stack"><h2>차례 — 네 파트, 열일곱 챕터</h2><div class="cards">{''.join(f'<a href="{f}"><img src="assets/img/thumb_{k}.webp" alt="" width="1024" height="448" loading="lazy"><div class="n">{n}</div><div class="t">{t}</div><div class="d">{d}</div><div class="m">{m}</div></a>' for f,k,n,t,d,m in [
+    h+=f'''<section class="sec" id="map"><div class="wrap stack"><h2>차례 — 네 파트, 열일곱 챕터</h2><div class="cards">{''.join(f'<a href="{f}"><img src="assets/img/thumb_{k}.webp" alt="" width="960" height="420" loading="lazy"><div class="n">{n}</div><div class="t">{t}</div><div class="d">{d}</div><div class="m">{m}</div></a>' for f,k,n,t,d,m in [
  ('part1_lda.html','part1','파트 1 · 챕터 1~5','깃발 찾기 — LDA','벡터 카드 → 거리 → 깃발(평균) → 그림자 점수 → Fisher 기준. 대결: 깃발 방향 대 가장 잘 갈리는 방향','약 30분 · 실험 5개 · 라운드 1 · 쪽지시험 5문항'),
  ('part2_knn.html','part2','파트 2 · 챕터 6~8','이웃 투표 — KNN','이웃 투표 → k 고르기 → 단위 맞추기. 대결: 한 명에게 묻기 대 일곱 명에게 묻기','약 20분 · 실험 3개 · 라운드 1 · 쪽지시험 5문항'),
  ('part3_svm.html','part3','파트 3 · 챕터 9~13','넓은 복도 — SVM·SVC','경계 줄 → 가장 넓은 복도 → 서포트 벡터 → C와 SVC → 이름 정리. 대결: 이웃 셋 대 가장 넓은 복도','약 30분 · 실험 5개 · 라운드 1 · 쪽지시험 5문항'),
